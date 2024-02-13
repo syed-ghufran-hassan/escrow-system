@@ -1,4 +1,4 @@
-# escrow-system
+# Escrow-system
 This is the escrow Dapp
 
 # Deployment on Sepolia 
