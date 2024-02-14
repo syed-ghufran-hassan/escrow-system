@@ -1,0 +1,35 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Beneficiary.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\n//import \"@openzeppelin/contracts/access/Ownable.sol\";\n\n\ncontract Beneficiary {\n    address public depositor;\n    address public arbiter;\n    uint amount;\n    bool public servicesDone;\n\n    modifier onlyArbiter() {\n        require(msg.sender == arbiter, \"NotAuthorized\");\n        _;\n    }\n\n    event Deposit(address indexed beneficiary, uint amount);\n    event Approved(uint amount);\n    event ServicesToggled(bool status);\n\n    constructor(address _arbiter) payable {\n        arbiter = _arbiter;\n        depositor = msg.sender;\n        amount = msg.value;\n\n        emit Deposit(msg.sender, amount);\n    }\n\n    function toggleServices() external onlyArbiter {\n        servicesDone = !servicesDone;\n        emit ServicesToggled(servicesDone);\n    }\n\n    function transferToBeneficiary() external onlyArbiter {\n        require(servicesDone, \"ServicesNotDone\");\n\n        (bool success, ) = depositor.call{ value: amount }(\"\");\n        require(success, \"Transfer to beneficiary failed\");\n\n        emit Approved(amount);\n    }\n\n   // function getBeneficiary() external view returns (address) {\n   //     return beneficiary;\n    //}\n    receive() external payable {}\n}"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "storageLayout",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    }
+  }
+}
