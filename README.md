@@ -9,12 +9,12 @@ A user deploys the smart contract by providing the address of an arbiter during 
 The deployed contract initializes the arbiter with the provided address, sets the depositor to the deployer's address (msg.sender), and records the amount of Ether sent with the deployment transaction.
 
 
-##Deposit:
+## Deposit:
 
 The Deposit event is emitted, indicating that funds have been successfully deposited.
 The amount variable holds the value of the deposited funds.
 
-##Toggle Services:
+## Toggle Services:
 
 The arbiter can toggle the servicesDone flag using the toggleServices function.
 The ServicesToggled event is emitted, reflecting the updated status of the services.
