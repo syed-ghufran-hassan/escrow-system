@@ -1,5 +1,5 @@
 # Escrow-system
-This is the escrow Dapp
+This is the escrow Dapp where an arbiter controls the release of funds based on the completion of certain service.
 
 # User Journey
 
