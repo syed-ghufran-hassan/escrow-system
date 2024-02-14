@@ -14,7 +14,7 @@ contract Beneficiary {
      event Deposit(address indexed beneficiary, uint amount);
     event Approved(uint amount);
     event ServicesToggled(bool status);
-constructo(address _arbiter) payable{
+constructor(address _arbiter) payable{
   arbiter = _arbiter;
   depositor = msg.sender;
         amount = msg.value;
