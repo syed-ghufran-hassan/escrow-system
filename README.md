@@ -1,9 +1,9 @@
 # Escrow-system
 This is the escrow Dapp
 
-#User Journey
+# User Journey
 
-##Deployment:
+## Deployment:
 
 A user deploys the smart contract by providing the address of an arbiter during deployment.
 The deployed contract initializes the arbiter with the provided address, sets the depositor to the deployer's address (msg.sender), and records the amount of Ether sent with the deployment transaction.
